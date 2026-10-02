@@ -1,0 +1,824 @@
+{
+  "summary": {
+    "total_tickets": 11600,
+    "refund_tickets": 2340,
+    "refund_rate_pct": 20.2,
+    "total_refund_amount": 6709932.0,
+    "replacement_tickets": 1282,
+    "date_range_start": "2025-01-01",
+    "date_range_end": "2026-06-30"
+  },
+  "by_month": [
+    {
+      "month": "2025-01",
+      "count": 58,
+      "total": 141048.0,
+      "all_tickets": 302,
+      "refund_rate_pct": 19.2
+    },
+    {
+      "month": "2025-02",
+      "count": 63,
+      "total": 177938.0,
+      "all_tickets": 324,
+      "refund_rate_pct": 19.4
+    },
+    {
+      "month": "2025-03",
+      "count": 91,
+      "total": 290597.0,
+      "all_tickets": 427,
+      "refund_rate_pct": 21.3
+    },
+    {
+      "month": "2025-04",
+      "count": 79,
+      "total": 250089.0,
+      "all_tickets": 452,
+      "refund_rate_pct": 17.5
+    },
+    {
+      "month": "2025-05",
+      "count": 86,
+      "total": 217464.0,
+      "all_tickets": 489,
+      "refund_rate_pct": 17.6
+    },
+    {
+      "month": "2025-06",
+      "count": 88,
+      "total": 259869.0,
+      "all_tickets": 447,
+      "refund_rate_pct": 19.7
+    },
+    {
+      "month": "2025-07",
+      "count": 119,
+      "total": 356986.0,
+      "all_tickets": 522,
+      "refund_rate_pct": 22.8
+    },
+    {
+      "month": "2025-08",
+      "count": 125,
+      "total": 367821.0,
+      "all_tickets": 590,
+      "refund_rate_pct": 21.2
+    },
+    {
+      "month": "2025-09",
+      "count": 161,
+      "total": 482284.0,
+      "all_tickets": 731,
+      "refund_rate_pct": 22.0
+    },
+    {
+      "month": "2025-10",
+      "count": 185,
+      "total": 575637.0,
+      "all_tickets": 870,
+      "refund_rate_pct": 21.3
+    },
+    {
+      "month": "2025-11",
+      "count": 186,
+      "total": 575984.0,
+      "all_tickets": 948,
+      "refund_rate_pct": 19.6
+    },
+    {
+      "month": "2025-12",
+      "count": 171,
+      "total": 475954.0,
+      "all_tickets": 860,
+      "refund_rate_pct": 19.9
+    },
+    {
+      "month": "2026-01",
+      "count": 153,
+      "total": 449868.0,
+      "all_tickets": 762,
+      "refund_rate_pct": 20.1
+    },
+    {
+      "month": "2026-02",
+      "count": 139,
+      "total": 372797.0,
+      "all_tickets": 765,
+      "refund_rate_pct": 18.2
+    },
+    {
+      "month": "2026-03",
+      "count": 163,
+      "total": 435773.0,
+      "all_tickets": 834,
+      "refund_rate_pct": 19.5
+    },
+    {
+      "month": "2026-04",
+      "count": 154,
+      "total": 402265.0,
+      "all_tickets": 720,
+      "refund_rate_pct": 21.4
+    },
+    {
+      "month": "2026-05",
+      "count": 149,
+      "total": 426737.0,
+      "all_tickets": 812,
+      "refund_rate_pct": 18.3
+    },
+    {
+      "month": "2026-06",
+      "count": 170,
+      "total": 450821.0,
+      "all_tickets": 745,
+      "refund_rate_pct": 22.8
+    }
+  ],
+  "by_quarter": [
+    {
+      "quarter": "2025Q1",
+      "count": 212,
+      "total": 609583.0
+    },
+    {
+      "quarter": "2025Q2",
+      "count": 253,
+      "total": 727422.0
+    },
+    {
+      "quarter": "2025Q3",
+      "count": 405,
+      "total": 1207091.0
+    },
+    {
+      "quarter": "2025Q4",
+      "count": 542,
+      "total": 1627575.0
+    },
+    {
+      "quarter": "2026Q1",
+      "count": 455,
+      "total": 1258438.0
+    },
+    {
+      "quarter": "2026Q2",
+      "count": 473,
+      "total": 1279823.0
+    }
+  ],
+  "by_reason": [
+    {
+      "refund_reason_code": "GW-OTHER",
+      "count": 591,
+      "total": 1757546.0,
+      "avg": 2973.851099830795,
+      "pct_of_total": 26.2
+    },
+    {
+      "refund_reason_code": "RETURN-QC-OK",
+      "count": 504,
+      "total": 1318253.0,
+      "avg": 2615.5813492063494,
+      "pct_of_total": 19.6
+    },
+    {
+      "refund_reason_code": "DUP-PAYMENT",
+      "count": 379,
+      "total": 1039914.0,
+      "avg": 2743.8364116094986,
+      "pct_of_total": 15.5
+    },
+    {
+      "refund_reason_code": "CANCEL",
+      "count": 342,
+      "total": 968804.0,
+      "avg": 2832.7602339181285,
+      "pct_of_total": 14.4
+    },
+    {
+      "refund_reason_code": "DOA-REPL",
+      "count": 184,
+      "total": 573454.0,
+      "avg": 3116.5978260869565,
+      "pct_of_total": 8.5
+    },
+    {
+      "refund_reason_code": "LOST-TRANSIT",
+      "count": 141,
+      "total": 457384.0,
+      "avg": 3243.8581560283687,
+      "pct_of_total": 6.8
+    },
+    {
+      "refund_reason_code": "WTY-BUYBACK",
+      "count": 99,
+      "total": 328419.0,
+      "avg": 3317.3636363636365,
+      "pct_of_total": 4.9
+    },
+    {
+      "refund_reason_code": "PRICE-ADJ",
+      "count": 100,
+      "total": 266158.0,
+      "avg": 2661.58,
+      "pct_of_total": 4.0
+    }
+  ],
+  "by_agent": [
+    {
+      "agent_id": "A3036",
+      "refund_count": 266,
+      "refund_total": 773812.0,
+      "total_tickets": 526,
+      "agent_name": "Ritika D'Souza",
+      "agent_team": "Returns Desk",
+      "refund_rate_pct": 50.6,
+      "avg_refund": 2909.07
+    },
+    {
+      "agent_id": "A3035",
+      "refund_count": 235,
+      "refund_total": 627682.0,
+      "total_tickets": 697,
+      "agent_name": "Dev Kulkarni",
+      "agent_team": "Billing",
+      "refund_rate_pct": 33.7,
+      "avg_refund": 2670.99
+    },
+    {
+      "agent_id": "A3030",
+      "refund_count": 162,
+      "refund_total": 507323.0,
+      "total_tickets": 942,
+      "agent_name": "Aishwarya Trivedi",
+      "agent_team": "Logistics",
+      "refund_rate_pct": 17.2,
+      "avg_refund": 3131.62
+    },
+    {
+      "agent_id": "A3038",
+      "refund_count": 171,
+      "refund_total": 490184.0,
+      "total_tickets": 322,
+      "agent_name": "Ankit Dhillon",
+      "agent_team": "Returns Desk",
+      "refund_rate_pct": 53.1,
+      "avg_refund": 2866.57
+    },
+    {
+      "agent_id": "A3037",
+      "refund_count": 175,
+      "refund_total": 428670.0,
+      "total_tickets": 367,
+      "agent_name": "Manish Iyer",
+      "agent_team": "Returns Desk",
+      "refund_rate_pct": 47.7,
+      "avg_refund": 2449.54
+    },
+    {
+      "agent_id": "A3032",
+      "refund_count": 126,
+      "refund_total": 338500.0,
+      "total_tickets": 314,
+      "agent_name": "Sneha Bansal",
+      "agent_team": "Billing",
+      "refund_rate_pct": 40.1,
+      "avg_refund": 2686.51
+    },
+    {
+      "agent_id": "A3033",
+      "refund_count": 113,
+      "refund_total": 323954.0,
+      "total_tickets": 320,
+      "agent_name": "Vikram Banerjee",
+      "agent_team": "Billing",
+      "refund_rate_pct": 35.3,
+      "avg_refund": 2866.85
+    },
+    {
+      "agent_id": "A3034",
+      "refund_count": 118,
+      "refund_total": 289841.0,
+      "total_tickets": 307,
+      "agent_name": "Tanvi Rathore",
+      "agent_team": "Billing",
+      "refund_rate_pct": 38.4,
+      "avg_refund": 2456.28
+    },
+    {
+      "agent_id": "A3018",
+      "refund_count": 87,
+      "refund_total": 231022.0,
+      "total_tickets": 786,
+      "agent_name": "Krishna Bhatt",
+      "agent_team": "Email Frontline",
+      "refund_rate_pct": 11.1,
+      "avg_refund": 2655.43
+    },
+    {
+      "agent_id": "A3026",
+      "refund_count": 65,
+      "refund_total": 193955.0,
+      "total_tickets": 505,
+      "agent_name": "Aadhya Deshpande",
+      "agent_team": "Voice Frontline",
+      "refund_rate_pct": 12.9,
+      "avg_refund": 2983.92
+    },
+    {
+      "agent_id": "A3028",
+      "refund_count": 57,
+      "refund_total": 172413.0,
+      "total_tickets": 269,
+      "agent_name": "Sameer Kapoor",
+      "agent_team": "Logistics",
+      "refund_rate_pct": 21.2,
+      "avg_refund": 3024.79
+    },
+    {
+      "agent_id": "A3039",
+      "refund_count": 43,
+      "refund_total": 170641.0,
+      "total_tickets": 380,
+      "agent_name": "Reyansh Mishra",
+      "agent_team": "Escalations & Warranty",
+      "refund_rate_pct": 11.3,
+      "avg_refund": 3968.4
+    },
+    {
+      "agent_id": "A3027",
+      "refund_count": 43,
+      "refund_total": 156694.0,
+      "total_tickets": 276,
+      "agent_name": "Priya Agarwal",
+      "agent_team": "Logistics",
+      "refund_rate_pct": 15.6,
+      "avg_refund": 3644.05
+    },
+    {
+      "agent_id": "A3029",
+      "refund_count": 45,
+      "refund_total": 151218.0,
+      "total_tickets": 284,
+      "agent_name": "Rajat Mukherjee",
+      "agent_team": "Logistics",
+      "refund_rate_pct": 15.8,
+      "avg_refund": 3360.4
+    },
+    {
+      "agent_id": "A3031",
+      "refund_count": 49,
+      "refund_total": 124101.0,
+      "total_tickets": 302,
+      "agent_name": "Zaid Desai",
+      "agent_team": "Logistics",
+      "refund_rate_pct": 16.2,
+      "avg_refund": 2532.67
+    },
+    {
+      "agent_id": "A3002",
+      "refund_count": 30,
+      "refund_total": 103853.0,
+      "total_tickets": 224,
+      "agent_name": "Steven Ansari",
+      "agent_team": "Chat Frontline",
+      "refund_rate_pct": 13.4,
+      "avg_refund": 3461.77
+    },
+    {
+      "agent_id": "A3010",
+      "refund_count": 32,
+      "refund_total": 102255.0,
+      "total_tickets": 251,
+      "agent_name": "Tenzin Mathew",
+      "agent_team": "Chat Frontline",
+      "refund_rate_pct": 12.7,
+      "avg_refund": 3195.47
+    },
+    {
+      "agent_id": "A3013",
+      "refund_count": 27,
+      "refund_total": 94370.0,
+      "total_tickets": 240,
+      "agent_name": "Rohit Nair",
+      "agent_team": "Chat Frontline",
+      "refund_rate_pct": 11.2,
+      "avg_refund": 3495.19
+    },
+    {
+      "agent_id": "A3017",
+      "refund_count": 32,
+      "refund_total": 88352.0,
+      "total_tickets": 234,
+      "agent_name": "Kabir Singh",
+      "agent_team": "Email Frontline",
+      "refund_rate_pct": 13.7,
+      "avg_refund": 2761.0
+    },
+    {
+      "agent_id": "A3007",
+      "refund_count": 27,
+      "refund_total": 87999.0,
+      "total_tickets": 231,
+      "agent_name": "Abhishek Gupta",
+      "agent_team": "Chat Frontline",
+      "refund_rate_pct": 11.7,
+      "avg_refund": 3259.22
+    },
+    {
+      "agent_id": "A3011",
+      "refund_count": 23,
+      "refund_total": 84335.0,
+      "total_tickets": 238,
+      "agent_name": "Rohit Gill",
+      "agent_team": "Chat Frontline",
+      "refund_rate_pct": 9.7,
+      "avg_refund": 3666.74
+    },
+    {
+      "agent_id": "A3016",
+      "refund_count": 28,
+      "refund_total": 83716.0,
+      "total_tickets": 234,
+      "agent_name": "Thomas Kumar",
+      "agent_team": "Email Frontline",
+      "refund_rate_pct": 12.0,
+      "avg_refund": 2989.86
+    },
+    {
+      "agent_id": "A3001",
+      "refund_count": 22,
+      "refund_total": 83065.0,
+      "total_tickets": 207,
+      "agent_name": "Suresh Kaur",
+      "agent_team": "Chat Frontline",
+      "refund_rate_pct": 10.6,
+      "avg_refund": 3775.68
+    },
+    {
+      "agent_id": "A3015",
+      "refund_count": 29,
+      "refund_total": 82408.0,
+      "total_tickets": 194,
+      "agent_name": "Sameer Jadhav",
+      "agent_team": "Chat Frontline",
+      "refund_rate_pct": 14.9,
+      "avg_refund": 2841.66
+    },
+    {
+      "agent_id": "A3005",
+      "refund_count": 31,
+      "refund_total": 81023.0,
+      "total_tickets": 211,
+      "agent_name": "Payal Bhatia",
+      "agent_team": "Chat Frontline",
+      "refund_rate_pct": 14.7,
+      "avg_refund": 2613.65
+    },
+    {
+      "agent_id": "A3003",
+      "refund_count": 30,
+      "refund_total": 76222.0,
+      "total_tickets": 231,
+      "agent_name": "Komal Singh",
+      "agent_team": "Chat Frontline",
+      "refund_rate_pct": 13.0,
+      "avg_refund": 2540.73
+    },
+    {
+      "agent_id": "A3006",
+      "refund_count": 31,
+      "refund_total": 72548.0,
+      "total_tickets": 230,
+      "agent_name": "Varun Bhatt",
+      "agent_team": "Chat Frontline",
+      "refund_rate_pct": 13.5,
+      "avg_refund": 2340.26
+    },
+    {
+      "agent_id": "A3012",
+      "refund_count": 24,
+      "refund_total": 65481.0,
+      "total_tickets": 210,
+      "agent_name": "Lakshmi Srivastava",
+      "agent_team": "Chat Frontline",
+      "refund_rate_pct": 11.4,
+      "avg_refund": 2728.38
+    },
+    {
+      "agent_id": "A3014",
+      "refund_count": 22,
+      "refund_total": 64044.0,
+      "total_tickets": 205,
+      "agent_name": "Anjali D'Souza",
+      "agent_team": "Chat Frontline",
+      "refund_rate_pct": 10.7,
+      "avg_refund": 2911.09
+    },
+    {
+      "agent_id": "A3009",
+      "refund_count": 26,
+      "refund_total": 63041.0,
+      "total_tickets": 228,
+      "agent_name": "Sukhwinder Singh",
+      "agent_team": "Chat Frontline",
+      "refund_rate_pct": 11.4,
+      "avg_refund": 2424.65
+    },
+    {
+      "agent_id": "A3008",
+      "refund_count": 17,
+      "refund_total": 59077.0,
+      "total_tickets": 184,
+      "agent_name": "Meera Malhotra",
+      "agent_team": "Chat Frontline",
+      "refund_rate_pct": 9.2,
+      "avg_refund": 3475.12
+    },
+    {
+      "agent_id": "A3021",
+      "refund_count": 18,
+      "refund_total": 55020.0,
+      "total_tickets": 133,
+      "agent_name": "Meera Mathew",
+      "agent_team": "Email Frontline",
+      "refund_rate_pct": 13.5,
+      "avg_refund": 3056.67
+    },
+    {
+      "agent_id": "A3020",
+      "refund_count": 19,
+      "refund_total": 47310.0,
+      "total_tickets": 132,
+      "agent_name": "Aadhya Singh",
+      "agent_team": "Email Frontline",
+      "refund_rate_pct": 14.4,
+      "avg_refund": 2490.0
+    },
+    {
+      "agent_id": "A3004",
+      "refund_count": 16,
+      "refund_total": 45618.0,
+      "total_tickets": 195,
+      "agent_name": "Geeta Dutta",
+      "agent_team": "Chat Frontline",
+      "refund_rate_pct": 8.2,
+      "avg_refund": 2851.12
+    },
+    {
+      "agent_id": "A3024",
+      "refund_count": 14,
+      "refund_total": 43923.0,
+      "total_tickets": 111,
+      "agent_name": "Amit Deshpande",
+      "agent_team": "Voice Frontline",
+      "refund_rate_pct": 12.6,
+      "avg_refund": 3137.36
+    },
+    {
+      "agent_id": "A3044",
+      "refund_count": 9,
+      "refund_total": 41450.0,
+      "total_tickets": 83,
+      "agent_name": "Arjun Kumar",
+      "agent_team": "Escalations & Warranty",
+      "refund_rate_pct": 10.8,
+      "avg_refund": 4605.56
+    },
+    {
+      "agent_id": "A3023",
+      "refund_count": 10,
+      "refund_total": 37505.0,
+      "total_tickets": 136,
+      "agent_name": "Ritika Gaikwad",
+      "agent_team": "Voice Frontline",
+      "refund_rate_pct": 7.4,
+      "avg_refund": 3750.5
+    },
+    {
+      "agent_id": "A3022",
+      "refund_count": 17,
+      "refund_total": 36722.0,
+      "total_tickets": 144,
+      "agent_name": "Daniel Arora",
+      "agent_team": "Email Frontline",
+      "refund_rate_pct": 11.8,
+      "avg_refund": 2160.12
+    },
+    {
+      "agent_id": "A3041",
+      "refund_count": 7,
+      "refund_total": 28433.0,
+      "total_tickets": 73,
+      "agent_name": "Mohammed Mehta",
+      "agent_team": "Escalations & Warranty",
+      "refund_rate_pct": 9.6,
+      "avg_refund": 4061.86
+    },
+    {
+      "agent_id": "A3042",
+      "refund_count": 9,
+      "refund_total": 27670.0,
+      "total_tickets": 59,
+      "agent_name": "Swati Bhatia",
+      "agent_team": "Escalations & Warranty",
+      "refund_rate_pct": 15.3,
+      "avg_refund": 3074.44
+    },
+    {
+      "agent_id": "A3019",
+      "refund_count": 12,
+      "refund_total": 22174.0,
+      "total_tickets": 136,
+      "agent_name": "Kavya Agarwal",
+      "agent_team": "Email Frontline",
+      "refund_rate_pct": 8.8,
+      "avg_refund": 1847.83
+    },
+    {
+      "agent_id": "A3025",
+      "refund_count": 9,
+      "refund_total": 21767.0,
+      "total_tickets": 118,
+      "agent_name": "Komal Malhotra",
+      "agent_team": "Voice Frontline",
+      "refund_rate_pct": 7.6,
+      "avg_refund": 2418.56
+    },
+    {
+      "agent_id": "A3040",
+      "refund_count": 9,
+      "refund_total": 20035.0,
+      "total_tickets": 73,
+      "agent_name": "Thomas Jadhav",
+      "agent_team": "Escalations & Warranty",
+      "refund_rate_pct": 12.3,
+      "avg_refund": 2226.11
+    },
+    {
+      "agent_id": "A3043",
+      "refund_count": 5,
+      "refund_total": 10506.0,
+      "total_tickets": 58,
+      "agent_name": "Nikhil Gupta",
+      "agent_team": "Escalations & Warranty",
+      "refund_rate_pct": 8.6,
+      "avg_refund": 2101.2
+    }
+  ],
+  "by_team": [
+    {
+      "assigned_team": "Returns Desk",
+      "refund_count": 633,
+      "refund_total": 1732192.0,
+      "total_tickets": 1161,
+      "refund_rate_pct": 54.5
+    },
+    {
+      "assigned_team": "Billing",
+      "refund_count": 604,
+      "refund_total": 1601340.0,
+      "total_tickets": 1600,
+      "refund_rate_pct": 37.8
+    },
+    {
+      "assigned_team": "Chat Frontline",
+      "refund_count": 362,
+      "refund_total": 1093167.0,
+      "total_tickets": 3229,
+      "refund_rate_pct": 11.2
+    },
+    {
+      "assigned_team": "Logistics",
+      "refund_count": 349,
+      "refund_total": 1087079.0,
+      "total_tickets": 2054,
+      "refund_rate_pct": 17.0
+    },
+    {
+      "assigned_team": "Email Frontline",
+      "refund_count": 204,
+      "refund_total": 576560.0,
+      "total_tickets": 1965,
+      "refund_rate_pct": 10.4
+    },
+    {
+      "assigned_team": "Voice Frontline",
+      "refund_count": 113,
+      "refund_total": 342233.0,
+      "total_tickets": 1000,
+      "refund_rate_pct": 11.3
+    },
+    {
+      "assigned_team": "Escalations & Warranty",
+      "refund_count": 75,
+      "refund_total": 277361.0,
+      "total_tickets": 591,
+      "refund_rate_pct": 12.7
+    }
+  ],
+  "violations": {
+    "refund_and_replacement": {
+      "count": 166,
+      "total_refund": 574191.0,
+      "by_team": [
+        {
+          "assigned_team": "Chat Frontline",
+          "count": 50,
+          "sum": 168084.0
+        },
+        {
+          "assigned_team": "Logistics",
+          "count": 48,
+          "sum": 164403.0
+        },
+        {
+          "assigned_team": "Email Frontline",
+          "count": 22,
+          "sum": 91420.0
+        },
+        {
+          "assigned_team": "Voice Frontline",
+          "count": 19,
+          "sum": 53416.0
+        },
+        {
+          "assigned_team": "Escalations & Warranty",
+          "count": 11,
+          "sum": 44778.0
+        },
+        {
+          "assigned_team": "Returns Desk",
+          "count": 13,
+          "sum": 42718.0
+        },
+        {
+          "assigned_team": "Billing",
+          "count": 3,
+          "sum": 9372.0
+        }
+      ]
+    },
+    "goodwill_over_cap": {
+      "count": 523,
+      "total_amount": 1736672.0,
+      "amount_over_cap": 1475172.0
+    }
+  },
+  "sla": {
+    "total_breaches": 1060,
+    "total_cost": 371000,
+    "by_channel": [
+      {
+        "channel": "chat",
+        "count": 370
+      },
+      {
+        "channel": "email",
+        "count": 486
+      },
+      {
+        "channel": "social",
+        "count": 102
+      },
+      {
+        "channel": "voice",
+        "count": 102
+      }
+    ]
+  },
+  "cleaning_log": {
+    "raw_rows": 12238,
+    "duplicate_rows_removed": 638,
+    "unique_tickets": 11600,
+    "legacy_amounts_converted": 650
+  },
+  "reconciliation": [
+    {
+      "check": "Sum of monthly refund totals = total refund amount",
+      "expected": 6709932.0,
+      "actual": 6709932.0,
+      "pass": "True"
+    },
+    {
+      "check": "Sum of reason-code totals = total refund amount",
+      "expected": 6709932.0,
+      "actual": 6709932.0,
+      "pass": "True"
+    },
+    {
+      "check": "Sum of agent refund totals = total refund amount",
+      "expected": 6709932.0,
+      "actual": 6709932.0,
+      "pass": "True"
+    },
+    {
+      "check": "Sum of monthly refund counts = total refund tickets",
+      "expected": 2340,
+      "actual": 2340,
+      "pass": true
+    }
+  ]
+}

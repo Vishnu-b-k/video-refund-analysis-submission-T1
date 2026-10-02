@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vireo Audio — Refund Analysis</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #1a1a1a; background: #f8f8f8; padding: 2rem; max-width: 1100px; margin: 0 auto; line-height: 1.5; }
+        h1 { font-size: 1.5rem; margin-bottom: 0.25rem; }
+        h2 { font-size: 1.15rem; margin: 2rem 0 0.75rem; border-bottom: 1px solid #ddd; padding-bottom: 0.3rem; }
+        h3 { font-size: 1rem; margin: 1.2rem 0 0.5rem; }
+        p { margin-bottom: 0.75rem; color: #444; font-size: 0.9rem; }
+        .subtitle { color: #666; font-size: 0.85rem; margin-bottom: 1.5rem; }
+        .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin: 1rem 0; }
+        .metric { background: #fff; border: 1px solid #e0e0e0; border-radius: 6px; padding: 1rem; }
+        .metric .value { font-size: 1.4rem; font-weight: 600; color: #1a1a1a; }
+        .metric .label { font-size: 0.78rem; color: #666; margin-top: 0.2rem; }
+        table { width: 100%; border-collapse: collapse; margin: 0.5rem 0 1.5rem; font-size: 0.82rem; background: #fff; }
+        th { background: #f0f0f0; text-align: left; padding: 0.5rem 0.75rem; font-weight: 600; border-bottom: 2px solid #ddd; }
+        td { padding: 0.4rem 0.75rem; border-bottom: 1px solid #eee; }
+        .num { text-align: right; font-variant-numeric: tabular-nums; }
+        .chart-container { background: #fff; border: 1px solid #e0e0e0; border-radius: 6px; padding: 1rem; margin: 1rem 0; }
+        .chart-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        canvas { max-height: 300px; }
+        .flag { background: #fff3cd; border-left: 4px solid #e6a817; padding: 0.75rem 1rem; margin: 0.75rem 0; font-size: 0.85rem; }
+        .flag strong { color: #856404; }
+        .pass td { color: #155724; }
+        .fail td { color: #721c24; font-weight: 600; }
+        .note { font-size: 0.8rem; color: #888; font-style: italic; }
+        @media print { body { padding: 0.5rem; } .chart-container { page-break-inside: avoid; } }
+    </style>
+</head>
+<body>
+    <h1>Vireo Audio — Refund Analysis</h1>
+    <p class="subtitle">Data: 2025-01-01 to 2026-06-30 · 11,600 tickets · Generated from support export</p>
+
+    <section>
+        <h2>Summary</h2>
+        <div class="metrics">
+            <div class="metric">
+                <div class="value">11,600</div>
+                <div class="label">Total Tickets</div>
+            </div>
+            <div class="metric">
+                <div class="value">2,340</div>
+                <div class="label">Refund Tickets (20.2%)</div>
+            </div>
+            <div class="metric">
+                <div class="value">₹6,709,932</div>
+                <div class="label">Total Refund Amount</div>
+            </div>
+            <div class="metric">
+                <div class="value">1,282</div>
+                <div class="label">Replacements Issued</div>
+            </div>
+        </div>
+
+        <div class="flag">
+            <strong>Data correction applied:</strong> 638 duplicate rows from migration
+            re-import were removed. 650 legacy-system refund amounts were converted
+            from paise to rupees (÷100). The raw export total of ~₹1 crore/quarter was incorrect.
+        </div>
+    </section>
+
+    <section>
+        <h2>Refunds by Month</h2>
+        <div class="chart-row">
+            <div class="chart-container">
+                <canvas id="monthAmountChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="monthCountChart"></canvas>
+            </div>
+        </div>
+        <table>
+            <thead><tr><th>Month</th><th>All Tickets</th><th>Refund Tickets</th><th>Refund Rate</th><th>Refund Amount</th></tr></thead>
+            <tbody><tr>
+            <td>2025-01</td>
+            <td class="num">302</td>
+            <td class="num">58</td>
+            <td class="num">19.2%</td>
+            <td class="num">₹141,048</td>
+        </tr><tr>
+            <td>2025-02</td>
+            <td class="num">324</td>
+            <td class="num">63</td>
+            <td class="num">19.4%</td>
+            <td class="num">₹177,938</td>
+        </tr><tr>
+            <td>2025-03</td>
+            <td class="num">427</td>
+            <td class="num">91</td>
+            <td class="num">21.3%</td>
+            <td class="num">₹290,597</td>
+        </tr><tr>
+            <td>2025-04</td>
+            <td class="num">452</td>
+            <td class="num">79</td>
+            <td class="num">17.5%</td>
+            <td class="num">₹250,089</td>
+        </tr><tr>
+            <td>2025-05</td>
+            <td class="num">489</td>
+            <td class="num">86</td>
+            <td class="num">17.6%</td>
+            <td class="num">₹217,464</td>
+        </tr><tr>
+            <td>2025-06</td>
+            <td class="num">447</td>
+            <td class="num">88</td>
+            <td class="num">19.7%</td>
+            <td class="num">₹259,869</td>
+        </tr><tr>
+            <td>2025-07</td>
+            <td class="num">522</td>
+            <td class="num">119</td>
+            <td class="num">22.8%</td>
+            <td class="num">₹356,986</td>
+        </tr><tr>
+            <td>2025-08</td>
+            <td class="num">590</td>
+            <td class="num">125</td>
+            <td class="num">21.2%</td>
+            <td class="num">₹367,821</td>
+        </tr><tr>
+            <td>2025-09</td>
+            <td class="num">731</td>
+            <td class="num">161</td>
+            <td class="num">22.0%</td>
+            <td class="num">₹482,284</td>
+        </tr><tr>
+            <td>2025-10</td>
+            <td class="num">870</td>
+            <td class="num">185</td>
+            <td class="num">21.3%</td>
+            <td class="num">₹575,637</td>
+        </tr><tr>
+            <td>2025-11</td>
+            <td class="num">948</td>
+            <td class="num">186</td>
+            <td class="num">19.6%</td>
+            <td class="num">₹575,984</td>
+        </tr><tr>
+            <td>2025-12</td>
+            <td class="num">860</td>
+            <td class="num">171</td>
+            <td class="num">19.9%</td>
+            <td class="num">₹475,954</td>
+        </tr><tr>
+            <td>2026-01</td>
+            <td class="num">762</td>
+            <td class="num">153</td>
+            <td class="num">20.1%</td>
+            <td class="num">₹449,868</td>
+        </tr><tr>
+            <td>2026-02</td>
+            <td class="num">765</td>
+            <td class="num">139</td>
+            <td class="num">18.2%</td>
+            <td class="num">₹372,797</td>
+        </tr><tr>
+            <td>2026-03</td>
+            <td class="num">834</td>
+            <td class="num">163</td>
+            <td class="num">19.5%</td>
+            <td class="num">₹435,773</td>
+        </tr><tr>
+            <td>2026-04</td>
+            <td class="num">720</td>
+            <td class="num">154</td>
+            <td class="num">21.4%</td>
+            <td class="num">₹402,265</td>
+        </tr><tr>
+            <td>2026-05</td>
+            <td class="num">812</td>
+            <td class="num">149</td>
+            <td class="num">18.3%</td>
+            <td class="num">₹426,737</td>
+        </tr><tr>
+            <td>2026-06</td>
+            <td class="num">745</td>
+            <td class="num">170</td>
+            <td class="num">22.8%</td>
+            <td class="num">₹450,821</td>
+        </tr></tbody>
+        </table>
+    </section>
+
+    <section>
+        <h2>Refunds by Reason Code</h2>
+        <div class="chart-container" style="max-width: 550px;">
+            <canvas id="reasonChart"></canvas>
+        </div>
+        <table>
+            <thead><tr><th>Reason Code</th><th>Count</th><th>Total Amount</th><th>% of Total</th><th>Avg Amount</th></tr></thead>
+            <tbody><tr>
+            <td>GW-OTHER</td>
+            <td class="num">591</td>
+            <td class="num">₹1,757,546</td>
+            <td class="num">26.2%</td>
+            <td class="num">₹2,974</td>
+        </tr><tr>
+            <td>RETURN-QC-OK</td>
+            <td class="num">504</td>
+            <td class="num">₹1,318,253</td>
+            <td class="num">19.6%</td>
+            <td class="num">₹2,616</td>
+        </tr><tr>
+            <td>DUP-PAYMENT</td>
+            <td class="num">379</td>
+            <td class="num">₹1,039,914</td>
+            <td class="num">15.5%</td>
+            <td class="num">₹2,744</td>
+        </tr><tr>
+            <td>CANCEL</td>
+            <td class="num">342</td>
+            <td class="num">₹968,804</td>
+            <td class="num">14.4%</td>
+            <td class="num">₹2,833</td>
+        </tr><tr>
+            <td>DOA-REPL</td>
+            <td class="num">184</td>
+            <td class="num">₹573,454</td>
+            <td class="num">8.5%</td>
+            <td class="num">₹3,117</td>
+        </tr><tr>
+            <td>LOST-TRANSIT</td>
+            <td class="num">141</td>
+            <td class="num">₹457,384</td>
+            <td class="num">6.8%</td>
+            <td class="num">₹3,244</td>
+        </tr><tr>
+            <td>WTY-BUYBACK</td>
+            <td class="num">99</td>
+            <td class="num">₹328,419</td>
+            <td class="num">4.9%</td>
+            <td class="num">₹3,317</td>
+        </tr><tr>
+            <td>PRICE-ADJ</td>
+            <td class="num">100</td>
+            <td class="num">₹266,158</td>
+            <td class="num">4.0%</td>
+            <td class="num">₹2,662</td>
+        </tr></tbody>
+        </table>
+        <p class="note">GW-OTHER is the default dropdown option; a large share may be miscoded. See reclassification section below.</p>
+    </section>
+
+    
+        <section>
+            <h2>GW-OTHER Reclassification</h2>
+            <p>The default reason code GW-OTHER ("Goodwill / Other") is the first option in the
+            helpdesk dropdown. 991 tickets were coded GW-OTHER; many appear to be miscoded.</p>
+
+            <table>
+                <thead><tr><th>Method</th><th>Count</th></tr></thead>
+                <tbody>
+                    <tr><td>Rules-based classification</td><td class="num">400</td></tr>
+                    <tr><td>LLM-assisted classification</td><td class="num">0</td></tr>
+                    <tr><td>Still GW-OTHER after reclassification</td><td class="num">591</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Reclassified Breakdown</h3>
+            <table>
+                <thead><tr><th>New Code</th><th>Count</th></tr></thead>
+                <tbody><tr><td>CANCEL</td><td class='num'>120</td></tr><tr><td>LOST-TRANSIT</td><td class='num'>94</td></tr><tr><td>DUP-PAYMENT</td><td class='num'>58</td></tr><tr><td>RETURN-QC-OK</td><td class='num'>52</td></tr><tr><td>DOA-REPL</td><td class='num'>37</td></tr><tr><td>PRICE-ADJ</td><td class='num'>29</td></tr><tr><td>WTY-BUYBACK</td><td class='num'>10</td></tr></tbody>
+            </table>
+        </section>
+        
+
+    <section>
+        <h2>Refunds by Team</h2>
+        <table>
+            <thead><tr><th>Team</th><th>Total Tickets</th><th>Refund Tickets</th><th>Refund Rate</th><th>Refund Amount</th></tr></thead>
+            <tbody><tr>
+            <td>Returns Desk</td>
+            <td class="num">1161</td>
+            <td class="num">633</td>
+            <td class="num">54.5%</td>
+            <td class="num">₹1,732,192</td>
+        </tr><tr>
+            <td>Billing</td>
+            <td class="num">1600</td>
+            <td class="num">604</td>
+            <td class="num">37.8%</td>
+            <td class="num">₹1,601,340</td>
+        </tr><tr>
+            <td>Chat Frontline</td>
+            <td class="num">3229</td>
+            <td class="num">362</td>
+            <td class="num">11.2%</td>
+            <td class="num">₹1,093,167</td>
+        </tr><tr>
+            <td>Logistics</td>
+            <td class="num">2054</td>
+            <td class="num">349</td>
+            <td class="num">17.0%</td>
+            <td class="num">₹1,087,079</td>
+        </tr><tr>
+            <td>Email Frontline</td>
+            <td class="num">1965</td>
+            <td class="num">204</td>
+            <td class="num">10.4%</td>
+            <td class="num">₹576,560</td>
+        </tr><tr>
+            <td>Voice Frontline</td>
+            <td class="num">1000</td>
+            <td class="num">113</td>
+            <td class="num">11.3%</td>
+            <td class="num">₹342,233</td>
+        </tr><tr>
+            <td>Escalations & Warranty</td>
+            <td class="num">591</td>
+            <td class="num">75</td>
+            <td class="num">12.7%</td>
+            <td class="num">₹277,361</td>
+        </tr></tbody>
+        </table>
+    </section>
+
+    <section>
+        <h2>Refunds by Agent (Top 20)</h2>
+        <p>Sorted by total refund amount. Refund rate accounts for each agent's ticket volume.</p>
+        <table>
+            <thead><tr><th>ID</th><th>Name</th><th>Team</th><th>Tickets</th><th>Refunds</th><th>Rate</th><th>Total</th><th>Avg</th></tr></thead>
+            <tbody><tr>
+            <td>A3036</td>
+            <td>Ritika D'Souza</td>
+            <td>Returns Desk</td>
+            <td class="num">526</td>
+            <td class="num">266</td>
+            <td class="num">50.6%</td>
+            <td class="num">₹773,812</td>
+            <td class="num">₹2,909</td>
+        </tr><tr>
+            <td>A3035</td>
+            <td>Dev Kulkarni</td>
+            <td>Billing</td>
+            <td class="num">697</td>
+            <td class="num">235</td>
+            <td class="num">33.7%</td>
+            <td class="num">₹627,682</td>
+            <td class="num">₹2,671</td>
+        </tr><tr>
+            <td>A3030</td>
+            <td>Aishwarya Trivedi</td>
+            <td>Logistics</td>
+            <td class="num">942</td>
+            <td class="num">162</td>
+            <td class="num">17.2%</td>
+            <td class="num">₹507,323</td>
+            <td class="num">₹3,132</td>
+        </tr><tr>
+            <td>A3038</td>
+            <td>Ankit Dhillon</td>
+            <td>Returns Desk</td>
+            <td class="num">322</td>
+            <td class="num">171</td>
+            <td class="num">53.1%</td>
+            <td class="num">₹490,184</td>
+            <td class="num">₹2,867</td>
+        </tr><tr>
+            <td>A3037</td>
+            <td>Manish Iyer</td>
+            <td>Returns Desk</td>
+            <td class="num">367</td>
+            <td class="num">175</td>
+            <td class="num">47.7%</td>
+            <td class="num">₹428,670</td>
+            <td class="num">₹2,450</td>
+        </tr><tr>
+            <td>A3032</td>
+            <td>Sneha Bansal</td>
+            <td>Billing</td>
+            <td class="num">314</td>
+            <td class="num">126</td>
+            <td class="num">40.1%</td>
+            <td class="num">₹338,500</td>
+            <td class="num">₹2,687</td>
+        </tr><tr>
+            <td>A3033</td>
+            <td>Vikram Banerjee</td>
+            <td>Billing</td>
+            <td class="num">320</td>
+            <td class="num">113</td>
+            <td class="num">35.3%</td>
+            <td class="num">₹323,954</td>
+            <td class="num">₹2,867</td>
+        </tr><tr>
+            <td>A3034</td>
+            <td>Tanvi Rathore</td>
+            <td>Billing</td>
+            <td class="num">307</td>
+            <td class="num">118</td>
+            <td class="num">38.4%</td>
+            <td class="num">₹289,841</td>
+            <td class="num">₹2,456</td>
+        </tr><tr>
+            <td>A3018</td>
+            <td>Krishna Bhatt</td>
+            <td>Email Frontline</td>
+            <td class="num">786</td>
+            <td class="num">87</td>
+            <td class="num">11.1%</td>
+            <td class="num">₹231,022</td>
+            <td class="num">₹2,655</td>
+        </tr><tr>
+            <td>A3026</td>
+            <td>Aadhya Deshpande</td>
+            <td>Voice Frontline</td>
+            <td class="num">505</td>
+            <td class="num">65</td>
+            <td class="num">12.9%</td>
+            <td class="num">₹193,955</td>
+            <td class="num">₹2,984</td>
+        </tr><tr>
+            <td>A3028</td>
+            <td>Sameer Kapoor</td>
+            <td>Logistics</td>
+            <td class="num">269</td>
+            <td class="num">57</td>
+            <td class="num">21.2%</td>
+            <td class="num">₹172,413</td>
+            <td class="num">₹3,025</td>
+        </tr><tr>
+            <td>A3039</td>
+            <td>Reyansh Mishra</td>
+            <td>Escalations & Warranty</td>
+            <td class="num">380</td>
+            <td class="num">43</td>
+            <td class="num">11.3%</td>
+            <td class="num">₹170,641</td>
+            <td class="num">₹3,968</td>
+        </tr><tr>
+            <td>A3027</td>
+            <td>Priya Agarwal</td>
+            <td>Logistics</td>
+            <td class="num">276</td>
+            <td class="num">43</td>
+            <td class="num">15.6%</td>
+            <td class="num">₹156,694</td>
+            <td class="num">₹3,644</td>
+        </tr><tr>
+            <td>A3029</td>
+            <td>Rajat Mukherjee</td>
+            <td>Logistics</td>
+            <td class="num">284</td>
+            <td class="num">45</td>
+            <td class="num">15.8%</td>
+            <td class="num">₹151,218</td>
+            <td class="num">₹3,360</td>
+        </tr><tr>
+            <td>A3031</td>
+            <td>Zaid Desai</td>
+            <td>Logistics</td>
+            <td class="num">302</td>
+            <td class="num">49</td>
+            <td class="num">16.2%</td>
+            <td class="num">₹124,101</td>
+            <td class="num">₹2,533</td>
+        </tr><tr>
+            <td>A3002</td>
+            <td>Steven Ansari</td>
+            <td>Chat Frontline</td>
+            <td class="num">224</td>
+            <td class="num">30</td>
+            <td class="num">13.4%</td>
+            <td class="num">₹103,853</td>
+            <td class="num">₹3,462</td>
+        </tr><tr>
+            <td>A3010</td>
+            <td>Tenzin Mathew</td>
+            <td>Chat Frontline</td>
+            <td class="num">251</td>
+            <td class="num">32</td>
+            <td class="num">12.7%</td>
+            <td class="num">₹102,255</td>
+            <td class="num">₹3,195</td>
+        </tr><tr>
+            <td>A3013</td>
+            <td>Rohit Nair</td>
+            <td>Chat Frontline</td>
+            <td class="num">240</td>
+            <td class="num">27</td>
+            <td class="num">11.2%</td>
+            <td class="num">₹94,370</td>
+            <td class="num">₹3,495</td>
+        </tr><tr>
+            <td>A3017</td>
+            <td>Kabir Singh</td>
+            <td>Email Frontline</td>
+            <td class="num">234</td>
+            <td class="num">32</td>
+            <td class="num">13.7%</td>
+            <td class="num">₹88,352</td>
+            <td class="num">₹2,761</td>
+        </tr><tr>
+            <td>A3007</td>
+            <td>Abhishek Gupta</td>
+            <td>Chat Frontline</td>
+            <td class="num">231</td>
+            <td class="num">27</td>
+            <td class="num">11.7%</td>
+            <td class="num">₹87,999</td>
+            <td class="num">₹3,259</td>
+        </tr></tbody>
+        </table>
+        <p class="note">High refund amounts for Returns Desk and Billing agents are expected given their role.
+        Frontline agents with elevated refund rates may warrant review.</p>
+    </section>
+
+    <section>
+        <h2>Policy Violations Flagged</h2>
+
+        <h3>1. Refund + Replacement Both Issued</h3>
+        <p>Policy §5 states: "In no case is a customer to receive both a refund and a replacement."</p>
+        <div class="flag">
+            <strong>166 tickets</strong> had both a refund and a replacement issued,
+            totalling <strong>₹574,191</strong> in refund costs.
+        </div>
+        <table>
+            <thead><tr><th>Team</th><th>Count</th><th>Refund Amount</th></tr></thead>
+            <tbody><tr><td>Chat Frontline</td><td class='num'>50</td><td class='num'>₹168,084</td></tr><tr><td>Logistics</td><td class='num'>48</td><td class='num'>₹164,403</td></tr><tr><td>Email Frontline</td><td class='num'>22</td><td class='num'>₹91,420</td></tr><tr><td>Voice Frontline</td><td class='num'>19</td><td class='num'>₹53,416</td></tr><tr><td>Escalations & Warranty</td><td class='num'>11</td><td class='num'>₹44,778</td></tr><tr><td>Returns Desk</td><td class='num'>13</td><td class='num'>₹42,718</td></tr><tr><td>Billing</td><td class='num'>3</td><td class='num'>₹9,372</td></tr></tbody>
+        </table>
+
+        <h3>2. Goodwill Credits Exceeding ₹500 Cap</h3>
+        <p>Policy §5 caps goodwill credits at ₹500/ticket with Team Lead approval.</p>
+        <div class="flag">
+            <strong>523 GW-OTHER refunds</strong> exceed ₹500.
+            Total: <strong>₹1,736,672</strong>.
+            Amount over the ₹500 cap: <strong>₹1,475,172</strong>.
+        </div>
+        <p class="note">Most of these are likely miscoded (should be a different reason code, not goodwill).
+        The true goodwill overspend is much smaller — but cannot be determined without reclassification.</p>
+    </section>
+
+    <section>
+        <h2>Reconciliation</h2>
+        <p>Automated checks verifying that report totals are internally consistent.</p>
+        <table>
+            <thead><tr><th></th><th>Check</th><th>Expected</th><th>Actual</th></tr></thead>
+            <tbody><tr class='pass'><td>✓</td><td>Sum of monthly refund totals = total refund amount</td><td class='num'>6709932.0</td><td class='num'>6709932.0</td></tr><tr class='pass'><td>✓</td><td>Sum of reason-code totals = total refund amount</td><td class='num'>6709932.0</td><td class='num'>6709932.0</td></tr><tr class='pass'><td>✓</td><td>Sum of agent refund totals = total refund amount</td><td class='num'>6709932.0</td><td class='num'>6709932.0</td></tr><tr class='pass'><td>✓</td><td>Sum of monthly refund counts = total refund tickets</td><td class='num'>2340</td><td class='num'>2340</td></tr></tbody>
+        </table>
+    </section>
+
+    <script>
+        // Monthly refund amount trend
+        new Chart(document.getElementById('monthAmountChart'), {
+            type: 'line',
+            data: {
+                labels: ["2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03", "2026-04", "2026-05", "2026-06"],
+                datasets: [{
+                    label: 'Refund Amount (₹)',
+                    data: [141048, 177938, 290597, 250089, 217464, 259869, 356986, 367821, 482284, 575637, 575984, 475954, 449868, 372797, 435773, 402265, 426737, 450821],
+                    borderColor: '#2563eb',
+                    backgroundColor: 'rgba(37,99,235,0.08)',
+                    fill: true,
+                    tension: 0.3,
+                    pointRadius: 3,
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: { legend: { display: false }, title: { display: true, text: 'Monthly Refund Amount (₹)' } },
+                scales: { y: { beginAtZero: true } }
+            }
+        });
+
+        // Monthly refund count
+        new Chart(document.getElementById('monthCountChart'), {
+            type: 'bar',
+            data: {
+                labels: ["2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03", "2026-04", "2026-05", "2026-06"],
+                datasets: [{
+                    label: 'Refund Count',
+                    data: [58, 63, 91, 79, 86, 88, 119, 125, 161, 185, 186, 171, 153, 139, 163, 154, 149, 170],
+                    backgroundColor: '#64748b',
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: { legend: { display: false }, title: { display: true, text: 'Monthly Refund Count' } },
+                scales: { y: { beginAtZero: true } }
+            }
+        });
+
+        // Reason code breakdown
+        new Chart(document.getElementById('reasonChart'), {
+            type: 'bar',
+            data: {
+                labels: ["GW-OTHER", "RETURN-QC-OK", "DUP-PAYMENT", "CANCEL", "DOA-REPL", "LOST-TRANSIT", "WTY-BUYBACK", "PRICE-ADJ"],
+                datasets: [{
+                    label: 'Amount (₹)',
+                    data: [1757546, 1318253, 1039914, 968804, 573454, 457384, 328419, 266158],
+                    backgroundColor: ['#e6a817','#2563eb','#10b981','#6366f1','#f43f5e','#8b5cf6','#f59e0b','#06b6d4'],
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                plugins: { legend: { display: false }, title: { display: true, text: 'Refund Amount by Reason Code (₹)' } },
+                scales: { x: { beginAtZero: true } }
+            }
+        });
+    </script>
+</body>
+</html>
